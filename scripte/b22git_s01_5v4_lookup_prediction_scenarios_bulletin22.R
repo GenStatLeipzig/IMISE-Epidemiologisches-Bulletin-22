@@ -174,7 +174,7 @@ shadowcolor = c("lightsteelblue3", "lightslategray", "skyblue4")[3]
 mycolors = c(shadowcolor, "black")
 colorbreaks = c( "Freedom Day 3.4.22", "Berichtet")
 
-colornewdata = "black"
+colornewdata = "red"
 
 p_posit= ggplot(marcin_testpos[DateRep<=as_date(plotenddate)], aes(DateRep, mean, col = scenario2, fill = scenario2)) +
   theme_minimal(base_size = 16) + 
@@ -183,13 +183,13 @@ p_posit= ggplot(marcin_testpos[DateRep<=as_date(plotenddate)], aes(DateRep, mean
   scale_y_continuous(breaks = pretty_breaks(6))+
   geom_ribbon(aes(ymin = p2.5,ymax = p97.5  ), alpha = 0.6,color = NA, fill = shadowcolor)+
   geom_line(lwd = 1, alpha = 0) +
-  geom_line(data= observed_data2[,. (DateRep, mean = NewConfCases, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4) + 
-  geom_line(data= observed_data2[,. (DateRep, mean = NewConfCases7 , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9, lty = 1) +
+  geom_line(data= observed_data2[DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = NewConfCases, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4) + 
+  geom_line(data= observed_data2[DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = NewConfCases7 , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9, lty = 1) +
   ggtitle(unique(marcin_testpos$variable)) +
   guides(color = "none")+
   
-  geom_line(data= observed_data2[DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = NewConfCases, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4, col = colornewdata) + 
-  geom_line(data= observed_data2[DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = NewConfCases7 , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4, lty = 1, col = colornewdata) +
+  geom_line(data= observed_data2[DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = NewConfCases, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.3, col = colornewdata) + 
+  geom_line(data= observed_data2[DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = NewConfCases7 , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9, lty = 1, col = colornewdata) +
   
   
   labs(color = "Szenario:", fill = "Szenario:") + 
@@ -211,9 +211,9 @@ p_marcin_dead= ggplot(marcin_dead[DateRep<=as_date(plotenddateTOT)& DateRep>=as_
   scale_y_continuous(breaks = pretty_breaks(6))+
   geom_ribbon(aes(ymin = p2.5,ymax = p97.5  ), alpha = 0.6,fill  = shadowcolor, colour = NA)+
   geom_line(lwd = 1, alpha = 0) +
-  geom_line(data= observed_data2[DateRep >as_date("2021-12-15"),. (DateRep, mean = AllDeaths , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.8) + 
+  geom_line(data= observed_data2[DateRep >as_date("2021-12-15")& DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = AllDeaths , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.8) + 
   
-  geom_line(data= observed_data2[DateRep >as_date(redaktionsschlus_datum),. (DateRep, mean = AllDeaths , scenario2 = "Berichtet")] , lwd = 1, alpha = 1, col = colornewdata) + 
+  geom_line(data= observed_data2[DateRep >=as_date(redaktionsschlus_datum),. (DateRep, mean = AllDeaths , scenario2 = "Berichtet")] , lwd = 1, alpha = 1, col = colornewdata) + 
   guides(color = "none")+
   
   ggtitle(unique(marcin_dead$variable)) +
@@ -234,11 +234,11 @@ p_marcin_hosp= ggplot(marcin_hosp[DateRep<=as_date(plotenddate)], aes(DateRep, m
   geom_ribbon(aes(ymin = p2.5,ymax = p97.5  ), alpha = 0.6, fill = shadowcolor, colour = NA)+
   # geom_line(lwd = 1, alpha = 0.8) +
   scale_y_continuous(breaks = pretty_breaks(6))+
-  geom_line(data= observed_data2[,. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4) + ggtitle("marcin_hosp") +
-  geom_line(data= observed_data2[,. (DateRep, mean = icu_plus_normal_belegung7, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9) + ggtitle("marcin_hosp") +
+  geom_line(data= observed_data2[DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4) + ggtitle("marcin_hosp") +
+  geom_line(data= observed_data2[DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung7, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9) + ggtitle("marcin_hosp") +
   
-  geom_line(data= observed_data2[DateRep >as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4, col = colornewdata) + 
-  geom_line(data= observed_data2[DateRep >as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung7, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9, col = colornewdata) + 
+  geom_line(data= observed_data2[DateRep >=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.3, col = colornewdata) + 
+  geom_line(data= observed_data2[DateRep >=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung7, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9, col = colornewdata) + 
   
   
   ggtitle("Hospitalisierte") +
