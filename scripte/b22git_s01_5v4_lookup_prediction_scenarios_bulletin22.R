@@ -146,7 +146,7 @@ icu_sachsen = all_icu4_bl[CountryExp=="Sachsen"]
 # Normastation ----
 observed_data2 = inccase[CountryExp =="Free State of Saxony"]
 observed_data2[, covid_inICU_upscaled := icu_sachsen[match_hk(observed_data2$DateRep %>% as.character(), icu_sachsen$DateRep%>% as.character()),`COVID-19 aktuell in Behandlung_upscaled`]]
-            
+
 # 
 normalstation = read_excel2(here("data/sachsen_kh_normalstation.xlsx"))
 normalstation

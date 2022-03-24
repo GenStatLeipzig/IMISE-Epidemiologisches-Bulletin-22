@@ -7,4 +7,4 @@ Additional Details for the Epidemiological bulletin 22 [ Epidemiological bulleti
 
 Black line shows data used for modelling (see bulletin), red indicates data observed later.
 
-![](results/b22git_s01_5v4_22-03-21.jpeg "Update scenarios vs observation")
+![](results/b22git_s03_1_comparison_SimuBulletin22_vs_observed.jpeg "Update scenarios vs observation")
