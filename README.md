@@ -5,6 +5,7 @@ Additional Details for the Epidemiological bulletin 22 [ Epidemiological bulleti
 
 ### Comparison observed data with described scenarios
 
-Black line shows data used for modelling (see bulletin), red indicates data observed later.
+Black line shows data used for modelling (for test-positives and hospitalized people mean of 7 days, right-centric, see bulletin), red indicates data observed later.
+The light oscillating lines are daily reported data. Grey shaded areas denote the range where most modelled trajectories are found (als 95% confidence intervall).
 
 ![](results/b22git_s03_1_comparison_SimuBulletin22_vs_observed.jpeg "Update scenarios vs observation")
