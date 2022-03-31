@@ -255,7 +255,8 @@ try(ggplotly(p_marcin_hosp))
 p_marcin_hosp 
 
 # Abb 10 haupt bulletin----
-p_posit +guides(fill = 'none', col = "none") + p_marcin_hosp + p_marcin_dead + plot_layout(nrow = 1,guides = 'collect') & theme(legend.position = 'top')
+p_posit +guides(fill = 'none', col = "none") + p_marcin_hosp + p_marcin_dead + plot_layout(nrow = 1,guides = 'collect') + plot_annotation(caption =  paste0("Datenstand Inzidenz:", datenstand, "\n", "Datenstand Hospitalisierte:", datenstandnormalstation) %>% as.character)& theme(legend.position = 'top') 
+
 
 
 
