@@ -250,7 +250,7 @@ p_marcin_hosp= ggplot(marcin_hosp[DateRep<=as_date(plotenddate)], aes(DateRep, m
   scale_fill_manual(values = mycolors, breaks  = colorbreaks) +
   xlab("")
 p_marcin_hosp
-try(ggplotly(p_marcin_hosp))
+# try(ggplotly(p_marcin_hosp))
 
 p_marcin_hosp 
 
