@@ -228,7 +228,7 @@ p_marcin_dead
 
 
 
-p_marcin_hosp= ggplot(marcin_hosp[DateRep<=as_date(plotenddate)], aes(DateRep, mean, col = scenario2, fill = scenario2)) +  
+p_marcin_hosp= ggplot(marcin_hosp[DateRep<=as_date(plotenddateTOT)], aes(DateRep, mean, col = scenario2, fill = scenario2)) +  
   theme_minimal(base_size = 16) + 
   scale_x_date(label = date_format(format ='%d.%b' ))+
   geom_ribbon(aes(ymin = p2.5,ymax = p97.5  ), alpha = 0.6, fill = shadowcolor, colour = NA)+
