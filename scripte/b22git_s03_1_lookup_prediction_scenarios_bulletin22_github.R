@@ -234,10 +234,10 @@ p_marcin_hosp= ggplot(marcin_hosp[DateRep<=as_date(plotenddateTOT)], aes(DateRep
   geom_ribbon(aes(ymin = p2.5,ymax = p97.5  ), alpha = 0.6, fill = shadowcolor, colour = NA)+
   # geom_line(lwd = 1, alpha = 0.8) +
   scale_y_continuous(breaks = pretty_breaks(6))+
-  geom_line(data= observed_data2[DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4) + ggtitle("marcin_hosp") +
+  geom_line(data= observed_data2[is.na(icu_plus_normal_belegung)==F][DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4) + ggtitle("marcin_hosp") +
   geom_line(data= observed_data2[DateRep<=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung7, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9) + ggtitle("marcin_hosp") +
   
-  geom_line(data= observed_data2[DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4, col = colornewdata) + 
+  geom_line(data= observed_data2[is.na(icu_plus_normal_belegung)==F][DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung, scenario2 = "Berichtet")] , lwd = 1, alpha = 0.4, col = colornewdata) + 
   geom_line(data= observed_data2[DateRep>=as_date(redaktionsschlus_datum),. (DateRep, mean = icu_plus_normal_belegung7 , scenario2 = "Berichtet")] , lwd = 1, alpha = 0.9, lty = 1, col = colornewdata) +
   
   
