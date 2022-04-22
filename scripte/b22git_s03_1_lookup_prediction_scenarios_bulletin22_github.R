@@ -55,6 +55,7 @@ setnames(cumdead, c('date','location_name', "value"), c('DateRep','CountryExp',"
 inccase[, DateRep := as_date(DateRep)]
 cumdead[, DateRep := as_date(DateRep)]
 
+
 inccase[, id := paste(DateRep,location )]
 cumdead[, id := paste(DateRep,location )]
 
